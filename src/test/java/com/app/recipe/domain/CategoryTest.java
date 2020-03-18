@@ -1,9 +1,9 @@
 package com.app.recipe.domain;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 public class CategoryTest {
 
@@ -16,8 +16,10 @@ public class CategoryTest {
 
     @Test
     public void getId() throws Exception {
-        Long idValue = 4L;
+        String idValue = "4";
+
         category.setId(idValue);
+
         assertEquals(idValue, category.getId());
     }
 
