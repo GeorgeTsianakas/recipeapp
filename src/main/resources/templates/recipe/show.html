@@ -21,7 +21,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-3">
-                                <h1 class="panel-title" th:text="${recipe.description}">Recipe Description Here</h1>
+                                <h1 class="panel-title" th:text="${recipe.description}">Recipe Description Here!</h1>
                             </div>
 
                             <div class="col-md-1">
@@ -37,16 +37,16 @@
                             </div>
                             <div class="col-md-3">
                                 <ul>
-                                    <li th:remove="all">category one</li>
-                                    <li th:remove="all">category two</li>
+                                    <li th:remove="all">cat one</li>
+                                    <li th:remove="all">cat two</li>
                                     <li th:each="category : ${recipe.categories}"
-                                        th:text="${category.getDescription()}">category three
+                                        th:text="${category.getDescription()}">cat three
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <img src="../../static/images/"
-                                     th:src="@{/images/guacamole400x400WithX.jpg}"
+                                <img src="../../static/images/.."
+                                     th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
                                      width="200" height="200">
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <h5>Cook time:</h5>
+                                <h5>Cooktime:</h5>
                             </div>
                             <div class="col-md-3">
                                 <p th:text="${(recipe.cookTime  +  '  Min')}">30 min</p>
