@@ -4,6 +4,7 @@ import com.app.recipe.commands.RecipeCommand;
 import com.app.recipe.converters.RecipeCommandToRecipe;
 import com.app.recipe.converters.RecipeToRecipeCommand;
 import com.app.recipe.domain.Recipe;
+import com.app.recipe.exceptions.NotFoundException;
 import com.app.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Set<Recipe> getRecipes() {
         log.debug("I'm in the service");
+
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
@@ -39,8 +41,9 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(Long l) {
 
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found. For ID value: " + l.toString());
         }
 
         return recipeOptional.get();
@@ -56,6 +59,7 @@ public class RecipeServiceImpl implements RecipeService {
     @Transactional
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
+
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
