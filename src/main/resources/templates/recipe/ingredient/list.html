@@ -27,10 +27,8 @@
                                th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/new'}" role="button">New</a>
                         </div>
                     </div>
-
                 </div>
                 <div class="panel-body">
-
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredients)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">

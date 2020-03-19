@@ -36,9 +36,11 @@ public class BootStrapMySQL implements ApplicationListener<ContextRefreshedEvent
             log.debug("Loading UOMs");
             loadUom();
         }
+
     }
 
     private void loadCategories() {
+
         Category cat1 = new Category();
         cat1.setDescription("American");
         categoryRepository.save(cat1);
@@ -54,9 +56,11 @@ public class BootStrapMySQL implements ApplicationListener<ContextRefreshedEvent
         Category cat4 = new Category();
         cat4.setDescription("Fast Food");
         categoryRepository.save(cat4);
+
     }
 
     private void loadUom() {
+
         UnitOfMeasure uom1 = new UnitOfMeasure();
         uom1.setDescription("Teaspoon");
         unitOfMeasureRepository.save(uom1);
@@ -88,6 +92,7 @@ public class BootStrapMySQL implements ApplicationListener<ContextRefreshedEvent
         UnitOfMeasure uom8 = new UnitOfMeasure();
         uom8.setDescription("Dash");
         unitOfMeasureRepository.save(uom8);
+
     }
 
 }

@@ -34,6 +34,7 @@ public class UnitOfMeasureServiceImplTest {
     public void listAllUoms() throws Exception {
         //given
         Set<UnitOfMeasure> unitOfMeasures = new HashSet<>();
+
         UnitOfMeasure uom1 = new UnitOfMeasure();
         uom1.setId(1L);
         unitOfMeasures.add(uom1);

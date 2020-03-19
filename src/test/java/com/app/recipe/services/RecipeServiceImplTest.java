@@ -62,8 +62,6 @@ public class RecipeServiceImplTest {
         when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
 
         Recipe recipeReturned = recipeService.findById(1L);
-
-        //should go boom
     }
 
     @Test
@@ -110,9 +108,7 @@ public class RecipeServiceImplTest {
 
         //when
         recipeService.deleteById(idToDelete);
-
         //no 'when', since method has void return type
-
         //then
         verify(recipeRepository, times(1)).deleteById(anyLong());
     }
