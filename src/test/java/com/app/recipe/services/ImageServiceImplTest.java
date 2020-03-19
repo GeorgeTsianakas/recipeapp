@@ -26,7 +26,6 @@ public class ImageServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-
         imageService = new ImageServiceImpl(recipeRepository);
     }
 
@@ -36,18 +35,13 @@ public class ImageServiceImplTest {
         String id = "1";
         MultipartFile multipartFile = new MockMultipartFile("imagefile", "testing.txt", "text/plain",
                 "Spring Framework Guru".getBytes());
-
         Recipe recipe = new Recipe();
         recipe.setId(id);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
-
         when(recipeRepository.findById(anyString())).thenReturn(recipeOptional);
-
         ArgumentCaptor<Recipe> argumentCaptor = ArgumentCaptor.forClass(Recipe.class);
-
         //when
         imageService.saveImageFile(id, multipartFile);
-
         //then
         verify(recipeRepository, times(1)).save(argumentCaptor.capture());
         Recipe savedRecipe = argumentCaptor.getValue();

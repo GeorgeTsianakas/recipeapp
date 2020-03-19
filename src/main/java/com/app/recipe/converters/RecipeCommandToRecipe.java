@@ -28,7 +28,6 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
         if (source == null) {
             return null;
         }
-
         final Recipe recipe = new Recipe();
         recipe.setId(source.getId());
         recipe.setCookTime(source.getCookTime());
@@ -50,7 +49,6 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
             source.getIngredients()
                     .forEach(ingredient -> recipe.getIngredients().add(ingredientConverter.convert(ingredient)));
         }
-
         return recipe;
     }
 

@@ -31,7 +31,6 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public Set<Recipe> getRecipes() {
         log.debug("I'm in the service");
-
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
@@ -39,13 +38,10 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public Recipe findById(String id) {
-
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
-
         if (!recipeOptional.isPresent()) {
             throw new NotFoundException("Recipe Not Found. For ID value: " + id);
         }
-
         return recipeOptional.get();
     }
 
@@ -59,7 +55,6 @@ public class RecipeServiceImpl implements RecipeService {
     @Transactional
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
         Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
-
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);

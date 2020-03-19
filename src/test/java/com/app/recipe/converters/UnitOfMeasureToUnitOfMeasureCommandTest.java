@@ -37,7 +37,6 @@ public class UnitOfMeasureToUnitOfMeasureCommandTest {
         uom.setDescription(DESCRIPTION);
         //when
         UnitOfMeasureCommand uomc = converter.convert(uom);
-
         //then
         assertEquals(LONG_VALUE, uomc.getId());
         assertEquals(DESCRIPTION, uomc.getDescription());
