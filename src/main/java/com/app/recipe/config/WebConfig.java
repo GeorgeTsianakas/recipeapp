@@ -21,7 +21,6 @@ public class WebConfig {
                         .ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(recipeService.getRecipes(), Recipe.class));
-
     }
 
 }

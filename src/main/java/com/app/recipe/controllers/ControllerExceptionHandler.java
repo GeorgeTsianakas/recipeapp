@@ -15,12 +15,9 @@ public class ControllerExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(WebExchangeBindException.class)
     public String handleNumberFormat(Exception exception, Model model) {
-
         log.error("Handling Binding Exception");
         log.error(exception.getMessage());
-
         model.addAttribute("exception", exception);
-
         return "400error";
     }
 

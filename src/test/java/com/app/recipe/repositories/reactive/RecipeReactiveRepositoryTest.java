@@ -26,11 +26,8 @@ public class RecipeReactiveRepositoryTest {
     public void testRecipeSave() throws Exception {
         Recipe recipe = new Recipe();
         recipe.setDescription("Yummy");
-
         recipeReactiveRepository.save(recipe).block();
-
         Long count = recipeReactiveRepository.count().block();
-
         assertEquals(Long.valueOf(1L), count);
     }
 

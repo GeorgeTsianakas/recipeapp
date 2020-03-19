@@ -17,9 +17,7 @@ public class CategoryTest {
     @Test
     public void getId() throws Exception {
         String idValue = "4";
-
         category.setId(idValue);
-
         assertEquals(idValue, category.getId());
     }
 

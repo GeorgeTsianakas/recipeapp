@@ -28,7 +28,6 @@ public class UnitOfMeasureServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-
         service = new UnitOfMeasureServiceImpl(unitOfMeasureReactiveRepository, unitOfMeasureToUnitOfMeasureCommand);
     }
 
@@ -39,16 +38,12 @@ public class UnitOfMeasureServiceImplTest {
         UnitOfMeasure uom1 = new UnitOfMeasure();
         uom1.setId("1");
         unitOfMeasures.add(uom1);
-
         UnitOfMeasure uom2 = new UnitOfMeasure();
         uom2.setId("2");
         unitOfMeasures.add(uom2);
-
         when(unitOfMeasureReactiveRepository.findAll()).thenReturn(Flux.just(uom1, uom2));
-
         //when
         List<UnitOfMeasureCommand> commands = service.listAllUoms().collectList().block();
-
         //then
         assertEquals(2, commands.size());
         verify(unitOfMeasureReactiveRepository, times(1)).findAll();
