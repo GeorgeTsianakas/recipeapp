@@ -6,6 +6,7 @@ A Spring Boot application created during springframeworkguru's tutorial
 * Spring Boot
 * JPA / Hibernate
 * MySQL / H2 
+* Thymeleaf
 * Bootstrap Framework
 * Maven
 * CircleCI
