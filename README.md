@@ -13,5 +13,5 @@ A Spring Boot application created during springframeworkguru's tutorial
 * Intellij IDE
 * GitKraken 
 ## Switching between brances
-[MongoDB Implementantion](https://github.com/GeorgeTsianakas/recipeapp/tree/master-mongo)
-[Spring WebFLux Implementantion](https://github.com/GeorgeTsianakas/recipeapp/tree/master-reactive)
+* [MongoDB Implementantion](https://github.com/GeorgeTsianakas/recipeapp/tree/master-mongo)
+* [Spring WebFLux Implementantion](https://github.com/GeorgeTsianakas/recipeapp/tree/master-reactive)
