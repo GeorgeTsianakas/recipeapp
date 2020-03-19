@@ -1,2 +1,2 @@
 # recipeapp
- Recipe application project for Spring Boot
+A Spring WebFLux reactive implementation
