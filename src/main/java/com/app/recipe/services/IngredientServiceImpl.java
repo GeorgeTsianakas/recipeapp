@@ -6,7 +6,6 @@ import com.app.recipe.converters.IngredientToIngredientCommand;
 import com.app.recipe.domain.Ingredient;
 import com.app.recipe.domain.Recipe;
 import com.app.recipe.repositories.RecipeRepository;
-import com.app.recipe.repositories.UnitOfMeasureRepository;
 import com.app.recipe.repositories.reactive.RecipeReactiveRepository;
 import com.app.recipe.repositories.reactive.UnitOfMeasureReactiveRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -39,17 +38,17 @@ public class IngredientServiceImpl implements IngredientService {
     @Override
     public Mono<IngredientCommand> findByRecipeIdAndIngredientId(String recipeId, String ingredientId) {
 
-        return recipeReactiveRepository.findById(recipeId)
-                .map(recipe -> recipe.getIngredients()
-                        .stream()
-                        .filter(ingredient -> ingredient.getId().equalsIgnoreCase(ingredientId))
-                        .findFirst())
-                .filter(Optional::isPresent)
+        return recipeReactiveRepository
+                .findById(recipeId)
+                .flatMapIterable(Recipe::getIngredients)
+                .filter(ingredient -> ingredient.getId().equalsIgnoreCase(ingredientId))
+                .single()
                 .map(ingredient -> {
-                    IngredientCommand command = ingredientToIngredientCommand.convert(ingredient.get());
+                    IngredientCommand command = ingredientToIngredientCommand.convert(ingredient);
                     command.setRecipeId(recipeId);
                     return command;
                 });
+
 
 //        Optional<Recipe> recipeOptional = recipeRepository.findById(recipeId);
 //
