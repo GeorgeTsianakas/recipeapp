@@ -1,7 +1,6 @@
 package com.app.recipe.controllers;
 
 import com.app.recipe.commands.RecipeCommand;
-import com.app.recipe.exceptions.NotFoundException;
 import com.app.recipe.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -28,7 +27,7 @@ public class RecipeController {
     @GetMapping("/recipe/{id}/show")
     public String showById(@PathVariable String id, Model model) {
 
-        model.addAttribute("recipe", recipeService.findById(id).block());
+        model.addAttribute("recipe", recipeService.findById(id));
 
         return "recipe/show";
     }
