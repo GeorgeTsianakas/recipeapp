@@ -78,7 +78,7 @@ public class ImageControllerTest {
         String s = "fake image text";
         Byte[] bytesBoxed = new Byte[s.getBytes().length];
         int i = 0;
-        for (byte primByte : s.getBytes()){
+        for (byte primByte : s.getBytes()) {
             bytesBoxed[i++] = primByte;
         }
         command.setImage(bytesBoxed);
